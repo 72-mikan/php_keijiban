@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charaset="utf-8">
+    {if $design == 10}
+    <meta name="viewport" content="width=480,user-scalable=no">
+    <link href="templates/login/sp.css" rel="stylesheet" media="all" />
+    <title>(Android・iPhone)ログインページ</title>
+    {/if}
+    {if $design == 11}
+    <meta name="viewport" content="width=480,user-scalable=no">
+    <link href="templates/login/mobile.css" rel="stylesheet" media="all" />
+    <title>(mobile)ログインページ</title>
+    {/if}
+    {if $design == 12}
+    <meta name="viewport" content="width=768,user-scalable=no">
+    <link href="templates/login/tablet.css" rel="stylesheet" media="all" />
+    <title>(Android・iPad)ログインページ</title>
+    {/if}
+    {if $design == 13}
+    <meta name="viewport" content="width=width=device-width">
+    <link href="templates/login/pc.css" rel="stylesheet" media="all" />
+    <title>(PC)ログインページ</title>
+    {/if}
+  </head>
+
+  <body>
+    {if $flag == 11}
+      <h3>簡易掲示板へのログイン</h3>
+  
+      <form action="" method="post">
+        <div class="form-item">パスワード：<input type="password" name="pass" value="{$cookie_pass}" ></div>
+        <div class="form-item">ID:<input type="text" name="id" value="{$cookie_id}"></div>
+        <div><input type="submit" value="ログイン"></div>
+      </form>
+
+      <a href="kadai3_4.php">登録はここから</a>
+    {/if}
+
+    {if $flag == 10}
+      <h3>ログイン失敗</h3>
+      <div>ユーザー登録が完了していない、</div>
+      <div>パスワードまたはIDが違います。</div>
+    {/if}
+    
+  </body>
+</html>

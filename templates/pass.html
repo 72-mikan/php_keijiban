@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {if $design == 10}
+    <meta name="viewport" content="width=480,user-scalable=no">
+    <link href="templates/pass/sp.css" rel="stylesheet" media="all" />
+    <title>(Android・iPhone)</title>
+    {/if}
+    {if $design == 11}
+    <meta name="viewport" content="width=480,user-scalable=no">
+    <link href="templates/pass/mobile.css" rel="stylesheet" media="all" />
+    <title>(mobile)</title>
+    {/if}
+    {if $design == 12}
+    <meta name="viewport" content="width=768,user-scalable=no">
+    <link href="templates/pass/tablet.css" rel="stylesheet" media="all" />
+    <title>(Android・iPad)</title>
+    {/if}
+    {if $design == 13}
+    <meta name="viewport" content="width=width=device-width">
+    <link href="templates/pass/pc.css" rel="stylesheet" media="all" />
+    <title>(PC)</title>
+    {/if}
+  </head>
+
+  <body>
+    <!--削除番号のパスワード入力-->
+    {if !empty($smarty.post.delete)}
+    <h3>パスワードを入力してくさい：削除</h3>
+    <form method="post" action="">
+      <input type="password" name="delete_pass">
+      <input type="hidden" name="delete_num1" value="{$delete_num}">
+      <input type="submit" value="送信">
+    </form>
+    {/if}
+
+    <!--編集番号のパスワード入力-->
+    {if !empty($smarty.post.edit)}
+    <h3>パスワードを入力してください：編集</h3>
+    <form method="post" action="">
+      <input type="password" name="edit_pass">
+      <input type="hidden" name="edit_num1" value="{$edit_num}">
+      <input type="submit" value="送信">
+    </form>
+    {/if}
+
+    <!--削除選択フォーム-->
+    {if $delete_pass == 10}
+    <h3>本当に削除してもよろしいですか？</h3>
+    <form method="post" action="">
+      <input type="radio" name="delete_select" value="10" checked="checked"/>Yes
+      <input type="radio" name="delete_select" value="11"/>No
+      <input type="hidden" name="delete_num2" value="{$id}">
+      <input type="submit" value="送信">
+    </form>
+    {/if}
+
+    <!--編集選択フォーム-->
+    {if $edit_pass == 10}
+    <h3>編集してください</h3>
+    <form method="post" action="" enctype="multipart/form-data">
+      <div>
+        名前：<input type="text" name="edit_name" value="{$name}">
+        内容：<input type="text" name="edit_text" value="{$text}">
+        パスワード：<input type="password" name="pass" value="{$pass_word}">
+        {if $flag == 10}
+          (未入力です)
+        {/if}
+        <input type="hidden" name="edit_num2" value="{$id}">
+      </div>
+      <div>
+        ここでアップロード：
+        <input type="hidden" name="MAX_FILE_SIZE" value="$maxsize"  />
+        <input type="file" name="upfile" accept=".gif, .jpg, .png, .mp4">
+        <input type="submit" value="投稿">
+      </div>
+    </form>
+    {/if}
+
+    <!--パスワード不一致時-->
+    {if $delete_pass == 11 || $edit_pass == 11}
+    <h3>パスワードが間違っています</h3>
+    <a href="keigiban.php">掲示板ページへ</a>
+    {/if}
+
+    <!--削除選択フォーム-->
+    {if $edit_pass == 12}
+    <h3>ファイルアップロードが不正、または、ファイルがアップロードされていません。</h3>
+    <p>ファイルなしの状態でアップロードしますか？</p>
+    <form method="post" action="">
+      <input type="radio" name="edit_select" value="10" checked="checked"/>Yes
+      <input type="radio" name="edit_select" value="11"/>No
+      <input type="hidden" name="edit_num3" value="{$id}">
+      <input type="hidden" name="edit_name2" value="{$edit_name2}">
+      <input type="hidden" name="edit_text2" value="{$edit_text2}">
+      <input type="hidden" name="edit_pass2" value="{$edit_pass2}">
+      <input type="hidden" name="file_name" value="{$file_name}">
+      <input type="submit" value="送信">
+    </form>
+    {/if}
+  
+  </body>
+</html>

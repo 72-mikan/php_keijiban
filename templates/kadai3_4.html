@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {if $design == 10}
+    <meta name="viewport" content="width=480,user-scalable=no">
+    <link href="templates/kadai3_4/sp.css" rel="stylesheet" media="all" />
+    <title>(Android・iPhone)登録ページ</title>
+    {/if}
+    {if $design == 11}
+    <meta name="viewport" content="width=480,user-scalable=no">
+    <link href="templates/kadai3_4/mobile.css" rel="stylesheet" media="all" />
+    <title>(mobile)登録ページ</title>
+    {/if}
+    {if $design == 12}
+    <meta name="viewport" content="width=768,user-scalable=no">
+    <link href="templates/kadai3_4/tablet.css" rel="stylesheet" media="all" />
+    <title>(Android・iPad)登録ページ</title>
+    {/if}
+    {if $design == 13}
+    <meta name="viewport" content="width=width=device-width">
+    <link href="templates/kadai3_4/pc.css" rel="stylesheet" media="all" />
+    <title>(PC)登録ページ</title>
+    {/if}
+  </head>
+
+  <body>
+    <h3>ユーザー登録</h3>
+
+    <form method="post" action="sent.php">
+      <div class="form-item">
+        名前：<input type="text" name="name">
+        メールアドレス:<input type="text" name="mail">
+        パスワード：<input type="password" name="pass">
+        <input type="submit" value="登録">
+      </div>
+    </form>
+  </body>
+</html>
